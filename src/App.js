@@ -11,11 +11,32 @@ import {
   getElementAtPosition,
 } from "./components/element";
 
+const useHistory = initialState => {
+  const [index, setIndex] = useState(0);
+  const [history, setHistory] = useState([initialState]);
+
+  const setState = (action, overwrite = false) => {
+    const newState = typeof action === 'function' ? action(history[index]) : action;
+    if (overwrite) {
+      const historyCopy = [...history];
+      historyCopy[index] = newState;
+      setHistory(historyCopy);
+    } else {
+      setHistory((prevState) => [prevState, newState]);
+      setIndex((prevState) => prevState + 1);
+    }
+  }
+  const undo = () => index > 0 && setIndex((prevState) => prevState - 1);
+  const redo = () => index < history.length - 1 && setIndex((prevState) => prevState + 1);
+
+  return [history[index], setState, undo, redo];
+}
+
 function App() {
   const [points, setPoints] = useState([]);
   const [path, setPath] = useState([]);
   const [isDrawing, setIsDrawing] = useState(false);
-  const [elements, setElements] = useState([]);
+  const [elements, setElements, undo, redo] = useHistory([]);
   const [action, setAction] = useState("none");
   const [toolType, setToolType] = useState("pencil");
   const [selectedElement, setSelectedElement] = useState(null);
@@ -105,7 +126,7 @@ function App() {
     );
     const elementsCopy = [...elements];
     elementsCopy[index] = updatedElement;
-    setElements(elementsCopy);
+    setElements(elementsCopy, true);
   };
 
   const checkPresent = (clientX, clientY) => {
