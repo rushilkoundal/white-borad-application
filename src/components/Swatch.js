@@ -27,6 +27,8 @@ export default function Swatch({
   setPath,
   colorWidth,
   setShapeWidth,
+  undo,
+  redo
 }) {
   const [displayStroke, setDisplayStroke] = useState(false);
 
@@ -225,6 +227,8 @@ export default function Swatch({
               {/* <Reset /> */}
               Clear
             </button>
+            <button style={styles.topicons} onClick={undo}>Undo</button>
+            <button style={styles.topicons} onClick={redo}>Redo</button>
             <button
               style={styles.topicons}
               data-toggle="tooltip"

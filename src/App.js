@@ -22,7 +22,8 @@ const useHistory = initialState => {
       historyCopy[index] = newState;
       setHistory(historyCopy);
     } else {
-      setHistory((prevState) => [prevState, newState]);
+      const updatedState = [...history].slice(0, index + 1);
+      setHistory((prevState) => [...updatedState, newState]);
       setIndex((prevState) => prevState + 1);
     }
   }
@@ -175,6 +176,7 @@ function App() {
         const offsetX = clientX - element.x1;
         const offsetY = clientY - element.y1;
         setSelectedElement({ ...element, offsetX, offsetY });
+        setElements((prevState) => prevState);
         if (element.position === "inside") {
           setAction("moving");
         } else {
@@ -342,6 +344,8 @@ function App() {
         setPath={setPath}
         colorWidth={colorWidth}
         setShapeWidth={setShapeWidth}
+        undo={undo}
+        redo={redo}
       />
       <canvas
         id="canvas"
