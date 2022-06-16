@@ -13,6 +13,8 @@ import {
   Eraser,
   Reset,
   Download,
+  // Undo,
+  // Redo
 } from "../theme/svg";
 import ColourPicker from "./ColorPicker";
 import { download } from "./download";
@@ -70,9 +72,8 @@ export default function Swatch({
             height: `${window.innerHeight * 0.09 * 8}px`,
             width: `${window.innerWidth * 0.073 * 1}px`,
             left: "20px",
-            top: `${
-              (window.innerHeight - window.innerHeight * 0.09 * 8) / 2
-            }px`,
+            top: `${(window.innerHeight - window.innerHeight * 0.09 * 8) / 2
+              }px`,
             borderRadius: "10px",
           }}
         >
@@ -206,9 +207,8 @@ export default function Swatch({
                   ? `${window.innerWidth * 0.073 * 5.6}px`
                   : `${window.innerWidth * 0.073 * 4.79}px`,
               height: `${window.innerHeight * 0.1}px`,
-              right: `${
-                (window.innerWidth - window.innerWidth * 0.073 * 4.8) / 20
-              }px`,
+              right: `${(window.innerWidth - window.innerWidth * 0.073 * 4.8) / 20
+                }px`,
               top: "20px",
               borderRadius: "10px",
             }}
@@ -224,8 +224,7 @@ export default function Swatch({
                 return;
               }}
             >
-              {/* <Reset /> */}
-              Clear
+              <Reset />
             </button>
             <button style={styles.topicons} onClick={undo}>Undo</button>
             <button style={styles.topicons} onClick={redo}>Redo</button>

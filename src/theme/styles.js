@@ -36,7 +36,7 @@ export const styles = reactCSS({
         window.innerWidth <= 1024 //320
           ? `${window.innerHeight - window.innerHeight * 0.981}px`
           : `${window.innerHeight - window.innerHeight * 0.999}px`,
-          cursor: 'pointer'
+      cursor: 'pointer'
     },
   },
 });
