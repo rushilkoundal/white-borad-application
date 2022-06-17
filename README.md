@@ -30,7 +30,7 @@ installing a physical one.
 
 ## Demo
 
-- [White Board Application](https://gilded-meerkat-1d488e.netlify.app/)
+- [White Board Application](https://jolly-eclair-b75dcb.netlify.app)
 
 
 ## Feedback
