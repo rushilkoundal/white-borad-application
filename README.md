@@ -30,7 +30,7 @@ installing a physical one.
 
 ## Demo
 
-- [White Board Application](https://jolly-eclair-b75dcb.netlify.app)
+- [White Board Application](https://simpllydraw.netlify.app)
 
 
 ## Feedback
